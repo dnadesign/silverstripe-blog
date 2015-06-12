@@ -190,15 +190,15 @@ class BlogPost extends Page {
 
 			$fields->insertAfter($summaryHolder, 'FeaturedImage');
 
-			$fields->push(HiddenField::create('MenuTitle'));
+			//$fields->push(HiddenField::create('MenuTitle'));
 
 			$urlSegment = $fields->dataFieldByName('URLSegment');
 			$urlSegment->setURLPrefix($self->Parent()->RelativeLink());
 
-			$fields->removeFieldsFromTab('Root.Main', array(
-				'MenuTitle',
-				'URLSegment',
-			));
+			// $fields->removeFieldsFromTab('Root.Main', array(
+			// 	'MenuTitle',
+			// 	'URLSegment',
+			// ));
 
 			$authorField = ListboxField::create(
 				'Authors',
@@ -233,7 +233,7 @@ class BlogPost extends Page {
 
 			$options = BlogAdminSidebar::create(
 				$publishDate,
-				$urlSegment,
+				//$urlSegment,
 				TagField::create(
 					'Categories',
 					_t('BlogPost.Categories', 'Categories'),
