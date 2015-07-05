@@ -14,6 +14,9 @@
  * @property int $BlogID
  */
 class BlogTag extends DataObject implements CategorisationObject {
+
+	static $force_lowercase = false;
+
 	/**
 	 * @var array
 	 */
@@ -133,4 +136,19 @@ class BlogTag extends DataObject implements CategorisationObject {
 
 		return $this->Blog()->canEdit($member);
 	}
+
+	/**
+	 * Set the tag title to be lowercase
+	 */
+	public function onBeforeWrite() {
+		parent::onBeforeWrite();
+
+		if($this->Config()->force_lowercase) {
+			$this->Title = strtolower($this->Title);
+		}
+	}
+
+
+
+
 }
